@@ -15,6 +15,10 @@ public class App {
 		while (true) {
 			int move = checkIfMovingAheadOrBack();
 			if (currentPlayer == -1) {
+				if (checkIfWon(player1, currentPlayer)) {
+					System.out.println("Player 1 won");
+					break;
+				}
 				if (move > NOPLAY) {
 					int diceValue = rollDice();
 					rollCountToWin++;
@@ -27,10 +31,11 @@ public class App {
 						player1 -= diceValue;
 					}
 				}
-				if (checkIfWon(player1, currentPlayer)) {
+			} else {
+				if (checkIfWon(player2, currentPlayer)) {
+					System.out.println("Player 2 won");
 					break;
 				}
-			} else {
 				if (move > NOPLAY) {
 					int diceValue = rollDice();
 					rollCountToWin++;
@@ -43,9 +48,7 @@ public class App {
 						player2 -= diceValue;
 					}
 				}
-				if (checkIfWon(player2, currentPlayer)) {
-					break;
-				}
+				
 			}
 			currentPlayer = -currentPlayer;
 

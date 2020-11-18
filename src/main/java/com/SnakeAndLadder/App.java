@@ -16,12 +16,15 @@ public class App {
 		System.out.println("Welcome to Snake and Ladder Program");
 
 		while (true) {
+			int diceValue = rollDice();
 			int move = checkIfMovingAheadOrBack();
 			if (move > NOPLAY) {
 				if (move == LADDER) {
-					currentPosition += rollDice();
+					currentPosition += diceValue;
+					if (currentPosition > 100)
+						currentPosition -= diceValue;
 				} else
-					currentPosition -= rollDice();
+					currentPosition -= diceValue;
 			}
 			if (checkIfWon()) {
 				break;

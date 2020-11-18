@@ -14,27 +14,29 @@ public class App {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Snake and Ladder Program");
-
+		int rollCountToWin = 0;
 		while (true) {
-			int diceValue = rollDice();
 			int move = checkIfMovingAheadOrBack();
 			if (move > NOPLAY) {
+				int diceValue = rollDice();
+				rollCountToWin++;
 				if (move == LADDER) {
 					currentPosition += diceValue;
 					if (currentPosition > 100)
 						currentPosition -= diceValue;
-				} else
+				} else {
 					currentPosition -= diceValue;
+				}
 			}
 			if (checkIfWon()) {
 				break;
 			}
 		}
+		System.out.println("Number of times Dice was rolled was:" + rollCountToWin);
 	}
 
 	private static boolean checkIfWon() {
-		System.out.println(currentPosition);
-		// TODO Auto-generated method stub
+		System.out.println("Current position" + currentPosition);
 		if (currentPosition == 100)
 			return true;
 		else {
@@ -56,7 +58,6 @@ public class App {
 
 		Random randomGenerator = new Random();
 		int diceValue = randomGenerator.nextInt(6) + 1;
-		System.out.println(diceValue);
 		return diceValue;
 
 	}

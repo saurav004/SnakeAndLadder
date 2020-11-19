@@ -1,9 +1,5 @@
 package com.SnakeAndLadder;
 
-/**
- * Hello world!
- *
- */
 public class App {
 	static int currentPosition = 0;
 
